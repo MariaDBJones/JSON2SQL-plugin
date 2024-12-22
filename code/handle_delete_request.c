@@ -49,7 +49,7 @@ switch(tokens) {
       cJSON_AddNumberToObject(json, "sizeof resource",sizeof(resource));
       cJSON_AddNumberToObject(json, "strchr resource null is not null", isresourcent);
       cJSON_AddStringToObject(json, "action",   "QUERY");
-#endif // GETLOG
+#endif // DELETELOG
       cJSON_AddStringToObject(json, "message",  "developped later");
       cJSON_AddNumberToObject(json, "httpcode", HTTP_OK);
     break; // end tokens=4
@@ -129,7 +129,7 @@ else {
 log_message("no query");
         cJSON_AddStringToObject(json, "todo", "nothing");
     }
-#endif // GETLOG
+#endif // DELETELOG
 
 // housekeeping
     answerget = cJSON_PrintUnformatted(json);
