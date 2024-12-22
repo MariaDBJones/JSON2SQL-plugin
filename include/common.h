@@ -21,11 +21,14 @@
 // cJSON headers
 #include <cjson/cJSON.h>
 
+//logging func header
+#include "log.h"
+
 // global variables sharing
 // Defining the resources we want to check
 // TODO : ability to declare the list in a config file / system variable
-extern const char *resources[] ;
-extern const int num_resources;
+// extern const char *resources[] ;
+// extern const int num_resources;
 
 // grant verification
 // extern int has_required_privilege(const char *user);
@@ -43,11 +46,11 @@ extern const int num_resources;
 #define POSTCORK          1 // inside method handler
 #define PATCHCORK         1 // inside method handler
 #define DELETECORK        1 // inside method handler
-#define HANDLERCORK       1 // global handler cork
+#define HANDLERCORK       0 // global handler cork
 #define GETMETHODCORK     1 // around method handler call
 #define PUTMETHODCORK     1 // around method handler call
 #define POSTMETHODCORK    1 // around method handler call
-#define PATCHMETHODCORK   1 // around method handler call
+#define PATCHMETHODCORK   0 // around method handler call
 #define DELETEMETHODCORK  1 // around method handler call
 
 // defining use HTTP response codes
@@ -61,17 +64,17 @@ extern const int num_resources;
 #define HTTP_UNSUPPORTED_MEDIA_TYPE 415 // request body format not json
 
 // methodd <=> privilege translation
-#define GET    "select"
-#define PUT    "execute"
-#define POST   "insert"
-#define PATCH  "update"
-#define DELETE "delete"
+// #define GET    "select"
+// #define PUT    "execute"
+// #define POST   "insert"
+// #define PATCH  "update"
+// #define DELETE "delete"
 
 // default exposed resources
-#define HEALTHCHECK_RESOURCE   "/v1/"
-#define STATUS_RESOURCE        "/v1/status/"
+// #define HEALTHCHECK_RESOURCE   "/v1/"
+// #define STATUS_RESOURCE        "/v1/status/"
 // #define SUBSCRIPTION_RESOURCE  "/v1/subscription/"
-#define RESOURCES_RESOURCE     "/v1/resources/"
+// #define RESOURCES_RESOURCE     "/v1/resources/"
 
 // ease the use of mysql_real_query
 #define STRING_WITH_LEN(X) (X), ((size_t) (sizeof(X) - 1))
@@ -81,6 +84,6 @@ extern const int num_resources;
 #define ADDRESS "0.0.0.0"
 
 // TODO : managing credentials through JWTs and request body
-#define APIUSER "apiadmin"
+// #define APIUSER "apiadmin"
 
 #endif // GLOBALS_H
