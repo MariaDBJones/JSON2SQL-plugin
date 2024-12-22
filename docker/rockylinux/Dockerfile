@@ -29,8 +29,12 @@ RUN printf "#!/bin/bash \n cd /app \n git clone -b $GITBRANCH --single-branch --
 RUN printf "#!/bin/bash \n cd /app/build \n cmake --build . --verbose \n" > build
 RUN printf "#!/bin/bash \n cp -f /app/plugin/libjson2sql.so /usr/lib64/mysql/plugin/ \n mariadbd-safe --defaults-extra-file=/etc/load_jsonplugin.cnf & && grep plugin /var/lib/mysql/*.err" > deploy
 RUN printf "#!/bin/bash \n mariadb -e 'shutdown;' \n rm -f /usr/lib64/mysql/plugin/libjson2sql.so \n rm -f /app/plugin/libjson2sql.so \n" > clean
-RUN printf "#!/bin/bash \n curl http://127.0.0.1:3000/v1/$1 " > call
-
+RUN printf "#!/bin/bash \n curl -w '%{http_code}' -X GET http://127.0.0.1:3000/v1/$1 " > GET
+RUN printf "#!/bin/bash \n curl -w '%{http_code}' -X DELETE http://127.0.0.1:3000/v1/tables/schema/table/column/value " > DELETE
+RUN printf "#!/bin/bash \n curl -w '%{http_code}' -X PATCH http://127.0.0.1:3000/v1/tables/schema/table/column/value " > PATCH
+RUN printf "#!/bin/bash \n curl -w '%{http_code}' -X POST http://127.0.0.1:3000/v1/tables/schema/table " > POST
+RUN printf "#!/bin/bash \n curl -w '%{http_code}' -X PUT http://127.0.0.1:3000/v1/tables/schema/proc " > PUT
+RUN printf "#!/bin/bash \n curl -w '%{http_code}' -X $1 http://127.0.0.1:3000/v1/pouet/pouet/pouet " > FAIL
 WORKDIR /app
 
 # Expose the default json2sql port
