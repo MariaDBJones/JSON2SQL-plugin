@@ -22,7 +22,7 @@ WORKDIR /opt
 # Add :opt to the $PATH for easy calling from inside the container
 ENV PATH="${PATH}:/opt"
 # setting the branch name we want to clone
-ENV GITBRANCH=UPDATE
+ENV GITBRANCH=DELETE
 
 RUN printf "[mariadb]\nplugin-load-add=libjson2sql\nplugin_maturity=unknown\n" > /etc/load_jsonplugin.cnf
 RUN printf "#!/bin/bash \n cd /app \n git clone -b $GITBRANCH --single-branch --depth 1 https://github.com/MariaDBJones/json2sql-plugin.git . \n mkdir build \n cd build \n cmake .. \n" > clone
