@@ -1,5 +1,5 @@
 # json2sql-plugin 
-### Creating a JSON API for remote consumption of MariaDB datas
+### Creating a CRUD JSON API for remote consumption of MariaDB datas
 
 The goal is to provide an easy way to map simple DML statements and stored procedure calls to http requests handing over json object as response. The scope of this project will stay "limited" to DML only.
 
