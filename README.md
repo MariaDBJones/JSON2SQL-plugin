@@ -1,7 +1,7 @@
 # json2sql-plugin 
 ### Creating a CRUD JSON API for remote consumption of MariaDB datas
 
-The goal is to provide an easy way to map simple DML statements and stored procedure calls to http requests handing over json object as response. The scope of this project will stay "limited" to DML only.
+The goal is to provide an easy way to map http requests to CRUD-like DML statements and eventually stored procedure calls with json objects in http as response. The scope of this project will stay "limited" to DML only.
 
 ## Project Status
 
